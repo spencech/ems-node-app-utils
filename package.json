@@ -1,10 +1,10 @@
 {
   "name": "ems-node-app-utils",
   "version": "1.0.0",
-  "author": "Chris Spence (https://educationalmediasolutions.com)",
+  "author": "",
   "description": "Basic JS utilities for use in NodeJS applications developed by Educational Media Solutions",
   "funding": "https://paypal.me/spencech",
-  "license": "MIT",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "publish": "git add -A . && git commit -m 'prepublish npm package' && npm version patch && ng build messages && cd dist && npm publish"
@@ -21,6 +21,7 @@
     "utilities",
     "nodejs"
   ],
-  "author": "",
-  "license": "ISC"
+  "peerDependencies": {
+    "underscore": "^1.13.6"
+  }
 }
