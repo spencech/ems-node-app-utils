@@ -1,6 +1,6 @@
 {
   "name": "ems-node-app-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "",
   "description": "Basic JS utilities for use in NodeJS applications developed by Educational Media Solutions",
   "funding": "https://paypal.me/spencech",
