@@ -143,7 +143,6 @@ exports.timestamp = function(date, includeTime = true) {
 }
 exports.trace = function(...parameters) {
     for (let i = 0, count = parameters.length; i < count; i++) {
-        // tslint:disable-next-line
         console.log(parameters[i]);
     }
 }
