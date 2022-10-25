@@ -13,7 +13,7 @@ Note that there is a peer dependency defined for this library that must also be 
 
 Module Usage:
 
-	import { trace, delay } from "ems-web-app-utils";
+	import { trace, delay } from "ems-node-app-utils";
 
 
 ## Methods
