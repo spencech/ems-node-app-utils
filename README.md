@@ -38,15 +38,10 @@ Returns a hash of date properties as strings (for formatting)
 	const dateinfo = dateStrings(new Date("2021/01/01")); { year: "2021", "month": "01", "date": "01", "time": "00:00", "seconds": "00" }
 
 ### delay(method: () => void, ms: number = 0): number
-Alias for window.setTimeout
+Alias for setTimeout
 
-	delay(() => console.log("test")); // same as window.setTimeout(() => console.log("test"), 0);
-	delay(() => console.log("test"),100); // same as window.setTimeout(() => console.log("test"), 100);
-
-### download(content: string, name: string, extension: string = "csv"):void
-Downloads in memory string as file (in web browser)
-
-	download("header 1,header 2\nvalue 1, value 2\nvalue 3, value 4","Sample Spreadseet", "csv"); //outputs: "sample-spreadsheet.csv" as CSV file
+	delay(() => console.log("test")); // same as setTimeout(() => console.log("test"), 0);
+	delay(() => console.log("test"),100); // same as setTimeout(() => console.log("test"), 100);
 
 ### empty(e: any): boolean
 	alias for falsy
@@ -99,22 +94,10 @@ Evaluates whether supplied object is falsy or empty
 	const num = -1; falsy(num); //false
 	const num = 1; falsy(num); //false
 
-### focus(selector: string): number
-Sets browser focus on supplied element
-
-	const $button = $("body").add("<button class='focus-me'>Focus Me</button>");
-	focus(".focus-me"); //focuses button after one turn of JS engine
-
 ### getLargestRemainder(values: number[], desiredSum: number): number[]
 Handles rounding errors when calculating sub percentages of a data set. Ensures that all segments add up to 100%.
 
 	getLargestRemainder([24, 25, 50]); // [25,25,50]
-
-### getparams(requestedProperty?: string): any
-Returns get parameters from the browser url
-
-	getparams(); // { debug: true, userId: 1, hello: "world" } where http://localhost/?debug=true&userId=1&hello=world
-	getparams("hello"); // "world" where http://localhost/?debug=true&userId=1&hello=world
 
 ### isset(e: any): boolean
 	alias for truthy
@@ -209,11 +192,3 @@ Applies regex to test for valid email
 Uses regex ex:
 
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-### viewport(el: HTMLElement, percentVisible: number = 100): boolean
-Determines whether the supplied object is within the browser's viewport
-
-	const inRangeElement = $(".block.inview").get(0);
-	const outOfRangeElement = $(".block.waydownbelow").get(0);
-	let inView = viewport(inRangeElement); // true;
-	inView = viewport(outOfRangeElement); // false

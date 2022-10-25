@@ -1,4 +1,4 @@
-export function alphabetize(...parameters) {
+exports.alphabetize = function(...parameters) {
     if (typeof parameters[0] === 'string') {
         // if this method is supplied as a callback to Array.sort
         const a = parameters[0];
@@ -23,12 +23,12 @@ export function alphabetize(...parameters) {
         return list;
     }
 }
-export function clone(obj) {
+exports.clone = function(obj) {
     if (obj === null || obj === undefined)
         return obj;
     return JSON.parse(JSON.stringify(obj));
 }
-export function dateStrings(date) {
+exports.dateStrings = function(date) {
     date = date || new Date();
     return {
         year: date.getFullYear(),
@@ -38,37 +38,24 @@ export function dateStrings(date) {
         seconds: date.getSeconds().toString().padStart(2, '0'),
     };
 }
-export function delay(method, ms = 0) {
-    return window.setTimeout(method, ms);
+exports.delay = function(method, ms = 0) {
+    return setTimeout(method, ms);
 }
-export function download(content, name, extension = 'csv') {
-    const blob = new Blob([content]);
-    name = kebab(name);
-    if (window.navigator.msSaveOrOpenBlob)
-        window.navigator.msSaveBlob(blob, `${name}.${extension}`);
-    else {
-        const a = window.document.createElement('a');
-        a.href = window.URL.createObjectURL(blob);
-        a.download = `${name}.${extension}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
-}
-export function empty(e) {
+
+exports.empty = function(e) {
     return falsy(e);
 }
-export function enumKeys(obj) {
+exports.enumKeys = function(obj) {
     return Object.keys(obj).filter(k => Number.isNaN(+k));
 }
-export function enumValues(obj) {
+exports.enumValues = function(obj) {
     const output = [];
     for (const value of enumKeys(obj)) {
         output.push(obj[value]);
     }
     return output;
 }
-export function falsy(e) {
+exports.falsy = function(e) {
     if (typeof e === 'string' && trim(e).match(/^false$/i))
         return true;
     if (typeof e === 'string')
@@ -79,13 +66,13 @@ export function falsy(e) {
         return e === 0;
     return _.isEmpty(e);
 }
-export function focus(selector) {
+exports.focus = function(selector) {
     const element = document.querySelector(selector);
     if (!element || !element.focus)
         return 0;
     return delay(() => element.focus());
 }
-export function getLargestRemainder(values, desiredSum) {
+exports.getLargestRemainder = function(values, desiredSum) {
     let sum = 0;
     let valueParts = values.map((value, index) => {
         const integerValue = value || 0;
@@ -107,32 +94,16 @@ export function getLargestRemainder(values, desiredSum) {
     }
     return valueParts.sort((a, b) => a.originalIndex - b.originalIndex).map((p) => p.integer);
 }
-export function getparams(requestedProperty) {
-    const vars = {};
-    const parts = window.location.href.replace(/[?&#]+([^=&]+)=([^&]*)/gi, ((m, key, value) => {
-        vars[key] = value;
-    }));
-    for (const prop in vars) {
-        if (vars[prop].toLowerCase() === 'true')
-            vars[prop] = true;
-        else if (vars[prop].toLowerCase() === 'false')
-            vars[prop] = false;
-        else if (!isNaN(parseFloat(vars[prop])) && !vars[prop].match(/[^0-9]+/gim))
-            vars[prop] = parseFloat(vars[prop]);
-    }
-    if (requestedProperty)
-        return vars[requestedProperty];
-    return vars;
-}
-export function isset(e) {
+
+exports.isset = function(e) {
     return truthy(e);
 }
-export function kebab(e) {
+exports.kebab = function(e) {
     if (_.isEmpty(e))
         return e;
     return e.toLowerCase().replace(/\s+/gim, '-').replace(/_/g, '-').replace(/-+/g, '-');
 }
-export function replaceItem(array, item, key = 'id', position = 'current') {
+exports.replaceItem = function(array, item, key = 'id', position = 'current') {
     const lookup = {};
     lookup[key] = item[key];
     const oldItem = _.findWhere(array, lookup);
@@ -150,27 +121,27 @@ export function replaceItem(array, item, key = 'id', position = 'current') {
     }
     return item;
 }
-export function sleep(duration = 0) {
+exports.sleep = function(duration = 0) {
     return new Promise((resolve) => {
         delay(() => resolve(duration), duration);
     });
 }
-export function snakecase(e) {
+exports.snakecase = function(e) {
     if (_.isEmpty(e))
         return e;
     return e.toLowerCase().replace(/\s+/gim, '_').replace(/-/g, '_').replace(/_+/g, '_');
 }
-export function tick(returnValue) {
+exports.tick = function(returnValue) {
     return new Promise((resolve, reject) => {
         delay(() => resolve(returnValue));
     });
 }
-export function timestamp(date, includeTime = true) {
+exports.timestamp = function(date, includeTime = true) {
     const info = dateStrings(date);
     const time = `${info.time}:${info.seconds}`;
     return `${info.year}-${info.month}-${info.date}${includeTime ? time : ''}`;
 }
-export function trace(...parameters) {
+exports.trace = function(...parameters) {
     if (!getparams().debug)
         return;
     for (let i = 0, count = parameters.length; i < count; i++) {
@@ -178,24 +149,20 @@ export function trace(...parameters) {
         console.log(parameters[i]);
     }
 }
-export function trim(e) {
+exports.trim = function(e) {
     if (_.isEmpty(e))
         return e;
     return e.replace(/^\s+/, '').replace(/\s+$/, '');
 }
-export function truthy(e) {
+
+exports.truthy = function(e) {
     return !falsy(e);
 }
-export function validateEmail(email) {
+
+exports.validateEmail = function(email) {
     if (!email)
         return null;
     return String(email)
         .toLowerCase()
         .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-}
-export function viewport(el, percentVisible = 100) {
-    const rect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    return !(Math.floor(100 - ((rect.top >= 0 ? 0 : rect.top) / +-(rect.height / 1)) * 100) < percentVisible ||
-        Math.floor(100 - ((rect.bottom - windowHeight) / rect.height) * 100) < percentVisible);
 }
