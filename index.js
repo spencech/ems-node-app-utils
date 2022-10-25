@@ -142,8 +142,6 @@ exports.timestamp = function(date, includeTime = true) {
     return `${info.year}-${info.month}-${info.date}${includeTime ? time : ''}`;
 }
 exports.trace = function(...parameters) {
-    if (!getparams().debug)
-        return;
     for (let i = 0, count = parameters.length; i < count; i++) {
         // tslint:disable-next-line
         console.log(parameters[i]);
