@@ -10,7 +10,7 @@
     "publish": "git add -A . && git commit -m 'prepublish npm package' && npm version patch && npm publish"
   },
   "keywords": [
-    "ems",
+    "ems!",
     "educational media solutions",
     "educational",
     "media",
