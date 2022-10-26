@@ -96,7 +96,7 @@ exports.getLargestRemainder = function(values, desiredSum) {
 }
 
 exports.isset = function(e) {
-    return truthy(e);
+    return exports.truthy(e);
 }
 exports.kebab = function(e) {
     if (_.isEmpty(e))
@@ -123,7 +123,7 @@ exports.replaceItem = function(array, item, key = 'id', position = 'current') {
 }
 exports.sleep = function(duration = 0) {
     return new Promise((resolve) => {
-        delay(() => resolve(duration), duration);
+        exports.delay(() => resolve(duration), duration);
     });
 }
 exports.snakecase = function(e) {
@@ -133,7 +133,7 @@ exports.snakecase = function(e) {
 }
 exports.tick = function(returnValue) {
     return new Promise((resolve, reject) => {
-        delay(() => resolve(returnValue));
+        exports.delay(() => resolve(returnValue));
     });
 }
 exports.timestamp = function(date, includeTime = true) {
@@ -153,7 +153,7 @@ exports.trim = function(e) {
 }
 
 exports.truthy = function(e) {
-    return !falsy(e);
+    return !exports.falsy(e);
 }
 
 exports.validateEmail = function(email) {
