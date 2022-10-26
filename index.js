@@ -1,3 +1,5 @@
+const _ = require("underscore");
+
 exports.alphabetize = function(...parameters) {
     if (typeof parameters[0] === 'string') {
         // if this method is supplied as a callback to Array.sort
