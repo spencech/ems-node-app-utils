@@ -56,7 +56,7 @@ exports.enumValues = function(obj) {
     return output;
 }
 exports.falsy = function(e) {
-    if (typeof e === 'string' && trim(e).match(/^false$/i))
+    if (typeof e === 'string' && exports.trim(e).match(/^false$/i))
         return true;
     if (typeof e === 'string')
         return _.isEmpty(e.replace(/\s+/gim, ''));
