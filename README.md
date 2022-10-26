@@ -75,7 +75,7 @@ Returns an array of values in an enum typescript object
 	const values = enumValues(Grade); // ["K", "1", "2", "3", "4", "5"];
 
 ### falsy(e: any): boolean
-Evaluates whether supplied object is falsy or empty
+Evaluates whether supplied object is falsy or empty.
 
 	const obj = {}; falsy(obj); //true
 	const obj = {hello: "world"}; falsy(obj); //false
