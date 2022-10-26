@@ -43,7 +43,7 @@ exports.delay = function(method, ms = 0) {
 }
 
 exports.empty = function(e) {
-    return falsy(e);
+    return exports.falsy(e);
 }
 exports.enumKeys = function(obj) {
     return Object.keys(obj).filter(k => Number.isNaN(+k));
