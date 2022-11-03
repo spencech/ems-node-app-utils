@@ -151,7 +151,7 @@ exports.trace = function(...parameters) {
 exports.trim = function(e) {
     if (_.isEmpty(e))
         return e;
-    return e.replace(/^\s+/, '').replace(/\s+$/, '');
+    return e.replace(/^\s+/, '').replace(/\s+$/, '').replace(/\s+/gim," ");
 }
 
 exports.truthy = function(e) {
