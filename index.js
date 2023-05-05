@@ -1,4 +1,5 @@
 const _ = require("underscore");
+const https = require("https");
 
 exports.alphabetize = function(...parameters) {
     if (typeof parameters[0] === 'string') {
